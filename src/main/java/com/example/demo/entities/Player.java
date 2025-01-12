@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Player {
 
-    private String name;
+    private String name = "";
     private int score = 0;
 
     public void incrementScore() {

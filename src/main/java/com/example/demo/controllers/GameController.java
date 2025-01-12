@@ -3,13 +3,17 @@ package com.example.demo.controllers;
 import com.example.demo.entities.Player;
 import com.example.demo.entities.Question;
 import com.example.demo.services.QuestionService;
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+import javafx.util.Duration;
 import lombok.Getter;
 
 public class GameController {
@@ -29,7 +33,24 @@ public class GameController {
     @FXML
     GridPane answerGrid;
     @FXML
+    TextFlow questionText;
+    @FXML
+    GridPane playersInfoGrid;
+    @FXML
     Text question;
+    @FXML
+    Label player1Name;
+    @FXML
+    Label player2Name;
+    /*    @FXML
+        Pane player1Pane;
+        @FXML
+        Pane player2Pane;*/
+    @FXML
+    Label player1Score;
+    @FXML
+    Label player2Score;
+
     QuestionService questionService = new QuestionService(QuestionService.loadQuestions());
     Question currentQuestion;
     @Getter
@@ -38,27 +59,34 @@ public class GameController {
     Player player2 = new Player();
     boolean isPlayer1Turn = true;
 
-/*    public static void delay(long millis, Runnable continuation) {
-        Task<Void> sleeper = new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-                try {
-                    Thread.sleep(millis);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-        };
-        sleeper.setOnSucceeded(event -> continuation.run());
-        new Thread(sleeper).start();
-    }*/
 
     @FXML
     public void initialize() {
         rerenderScene();
-        answerGrid.setHgap(10);
-        answerGrid.setVgap(10);
+    }
+
+    private void rerenderScene() {
+        currentQuestion = questionService.getNextQuestion();
+        if (currentQuestion == null) {
+            var winner = getWinner();
+            question.setText("TIE");
+            if (winner != null) {
+                question.setText(winner.getName() + " WINS WITH SCORE - " + winner.getScore());
+            }
+            return;
+        }
+        var answers = currentQuestion.getAnswerOptions();
+        int size = answers.size();
+        question.setText(currentQuestion.getQuestionText());
+
+        int columns = (int) Math.ceil(Math.sqrt(size));
+        int rows = (int) Math.ceil((double) size / columns);
+
+        setupAnswerButtons(currentQuestion, columns);
+        setupGridConstraints(answerGrid, columns, rows);
+        setupGridConstraints(playersInfoGrid, columns, rows);
+        //updatePlayerHighlight();
+
     }
 
     private void handleAnswerSelection(Button button, String selectedAnswer) {
@@ -68,45 +96,31 @@ public class GameController {
             button.setStyle("-fx-background-color: #32CD32;");
             if (isPlayer1Turn) {
                 player1.incrementScore();
+                player1Score.setText("score: " + player1.getScore());
             } else {
 
                 player2.incrementScore();
+                player2Score.setText("score: " + player2.getScore());
             }
         } else {
             button.setStyle(
                     "-fx-background-color: #FF6347;");
         }
 
-        isPlayer1Turn = !isPlayer1Turn;
+        PauseTransition pause = new PauseTransition(Duration.seconds(1));
+        answerGrid.setDisable(true);
+        pause.setOnFinished(event -> {
+            answerGrid.setDisable(false);
+            isPlayer1Turn = !isPlayer1Turn;
+            rerenderScene();
+        });
 
-        //delay(5000, this::rerenderScene);
-        rerenderScene();
+        pause.play();
     }
 
-    private void rerenderScene() {
-        currentQuestion = questionService.getNextQuestion();
-        var answers = currentQuestion.getAnswerOptions();
-        int size = answers.size();
-        question.setText(currentQuestion.getQuestionText());
-
-        int columns = (int) Math.ceil(Math.sqrt(size));
-        int rows = (int) Math.ceil((double) size / columns);
-
-        if (currentQuestion == null) {
-            var winner = getWinner();
-            question.setText("TIE");
-            if (winner != null) {
-                question.setText(winner.getName() + " WINS WITH SCORE - " + winner.getScore());
-            }
-            return;
-        }
-
-        setupAnswerButtons(currentQuestion, columns);
-        setupGridConstraints(columns, rows);
-
-    }
 
     private void setupAnswerButtons(Question currentQuestion, int columns) {
+        answerGrid.getChildren().clear();
         var answers = currentQuestion.getAnswerOptions();
         int size = answers.size();
         int colorIndex = 0;
@@ -145,20 +159,20 @@ public class GameController {
                 (int) (color.getGreen() * 255), (int) (color.getBlue() * 255));
     }
 
-    private void setupGridConstraints(int columns, int rows) {
-        answerGrid.getColumnConstraints().clear();
-        answerGrid.getRowConstraints().clear();
+    private void setupGridConstraints(GridPane grid, int columns, int rows) {
+        grid.getColumnConstraints().clear();
+        grid.getRowConstraints().clear();
 
         for (int i = 0; i < columns; i++) {
             ColumnConstraints col = new ColumnConstraints();
             col.setPercentWidth(100.0 / columns);
-            answerGrid.getColumnConstraints().add(col);
+            grid.getColumnConstraints().add(col);
         }
 
         for (int i = 0; i < rows; i++) {
             RowConstraints row = new RowConstraints();
             row.setPercentHeight(100.0 / rows);
-            answerGrid.getRowConstraints().add(row);
+            grid.getRowConstraints().add(row);
         }
     }
 
@@ -171,4 +185,57 @@ public class GameController {
             return null; // tie
         }
     }
+
+    public void setPlayersNames(String name1, String name2) {
+        player1.setName(name1);
+        player2.setName(name2);
+        player1Name.setText(name1);
+        player2Name.setText(name2);
+    }
+/*
+
+    private void updatePlayerHighlight() {
+        if (isPlayer1Turn) {
+            player1Pane.setStyle(
+                    "-fx-border-color: #FFD700; -fx-border-width: 3px; -fx-border-radius: 5px;");
+            player2Pane.setStyle("-fx-border-color: transparent;");
+        } else {
+            player2Pane.setStyle(
+                    "-fx-border-color: #FFD700; -fx-border-width: 3px; -fx-border-radius: 5px;");
+            player1Pane.setStyle("-fx-border-color: transparent;");
+        }
+    }
+*/
+
+
+
+/*    private void setupGridHighlight(GridPane grid) {
+        grid.setStyle("-fx-background-color: #32CD32;");
+    }
+
+
+    private void updatePlayerHighlight() {
+        // Скидання стилів всіх комірок
+        resetPlayerHighlight();
+
+        // Застосування стилю до комірки поточного гравця
+        if (isPlayer1Turn) {
+            highlightPlayerText(player1Name, Color.GOLD); // Change to gold for player 1
+        } else {
+            highlightPlayerText(player2Name, Color.RED); // Change to red for player 2
+        }
+    }
+
+    // Скидає стиль тексту всіх гравців
+    private void resetPlayerHighlight() {
+        player1Name.setStyle("-fx-text-fill: black;");
+        player2Name.setStyle("-fx-text-fill: black;");
+    }
+
+    // Змінює колір тексту активного гравця
+    private void highlightPlayerText(Label playerLabel, Color textColor) {
+        playerLabel.setStyle("-fx-text-fill: " + toHex(textColor) + ";");
+    }*/
+
+
 }

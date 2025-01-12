@@ -22,11 +22,11 @@ public class MainMenuController {
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/example/demo/game.fxml"));
+
             Parent root = loader.load();
 
             GameController gameController = loader.getController();
-            gameController.getPlayer1().setName(player1Name.getText());
-            gameController.getPlayer2().setName(player2Name.getText());
+            gameController.setPlayersNames(player1Name.getText(), player2Name.getText());
 
             Stage stage = (Stage) player1Name.getScene().getWindow();
             stage.setScene(new Scene(root));
