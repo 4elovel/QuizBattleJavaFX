@@ -2,7 +2,9 @@ package com.example.demo.services;
 
 import com.example.demo.entities.Question;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,6 +12,7 @@ import java.util.List;
 
 public class QuestionService {
 
+    private static final String FILE_PATH = "data.txt";
     private final List<Question> questions;
     private int currentIndex = 0;
 
@@ -19,10 +22,9 @@ public class QuestionService {
     }
 
     public static List<Question> loadQuestions() {
-        String filePath = "data.txt";
         List<Question> questions = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (!line.trim().isEmpty()) {
@@ -41,8 +43,16 @@ public class QuestionService {
         if (parts.length != 3) {
             throw new IllegalArgumentException("Invalid question format: " + line);
         }
-        String questionText = parts[0].trim();
-        List<String> answerOptions = splitWithEscapedDelimiter(parts[1], ",");
+        // Знімаємо екранування тексту питання
+        String questionText = unescape(parts[0].trim());
+
+        // Знімаємо екранування тексту варіантів відповідей
+        List<String> answerOptions = new ArrayList<>();
+        for (String option : splitWithEscapedDelimiter(parts[1], ",")) {
+            answerOptions.add(unescape(option));
+        }
+
+        // Читаємо індекси правильних відповідей
         List<Integer> correctAnswerIndexes = new ArrayList<>();
         for (String index : parts[2].split(",")) {
             correctAnswerIndexes.add(Integer.parseInt(index.trim()));
@@ -56,19 +66,17 @@ public class QuestionService {
         StringBuilder current = new StringBuilder();
         boolean inEscape = false;
 
-        for (char c : text.toCharArray()) {
+        for (int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
             if (inEscape) {
-                if (c == delimiter.charAt(0) || c == '\\') {
-                    current.append(c);
-                } else {
-                    current.append('\\').append(c);
-                }
+                current.append(c);
                 inEscape = false;
             } else if (c == '\\') {
                 inEscape = true;
-            } else if (c == delimiter.charAt(0)) {
+            } else if (text.startsWith(delimiter, i)) {
                 result.add(current.toString().trim());
                 current.setLength(0);
+                i += delimiter.length() - 1; // Пропускаємо довжину роздільника
             } else {
                 current.append(c);
             }
@@ -76,6 +84,53 @@ public class QuestionService {
 
         result.add(current.toString().trim());
         return result;
+    }
+
+    private static String escape(String text) {
+        return text.replace("\\", "\\\\")
+                .replace(";", "\\;")
+                .replace(",", "\\\\,");
+    }
+
+    private static String unescape(String text) {
+        StringBuilder result = new StringBuilder();
+        boolean inEscape = false;
+
+        for (char c : text.toCharArray()) {
+            if (inEscape) {
+                result.append(c);
+                inEscape = false;
+            } else if (c == '\\') {
+                inEscape = true;
+            } else {
+                result.append(c);
+            }
+        }
+
+        return result.toString();
+    }
+
+    public static void saveQuestion(String questionText, List<String> answerOptions,
+            List<Integer> correctAnswerIndexes) throws IOException {
+        // Екранування тексту
+        String escapedQuestion = escape(questionText);
+        List<String> escapedOptions = new ArrayList<>();
+        for (String option : answerOptions) {
+            escapedOptions.add(escape(option));
+        }
+
+        // Форматування рядка для запису у файл
+        StringBuilder line = new StringBuilder();
+        line.append(escapedQuestion).append(";");
+        line.append(String.join(",", escapedOptions)).append(";");
+        line.append(String.join(",",
+                correctAnswerIndexes.stream().map(String::valueOf).toArray(String[]::new)));
+
+        // Запис у файл
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
+            writer.write(line.toString());
+            writer.newLine();
+        }
     }
 
     public Question getNextQuestion() {

@@ -4,18 +4,20 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
-
-<VBox fx:id="mainBox" alignment="CENTER" minHeight="273.0" minWidth="381.0" prefHeight="273.0" prefWidth="429.0" spacing="20" stylesheets="@main-menu-styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controllers.GameMenuController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" minHeight="273.0" minWidth="381.0" prefHeight="273.0"
+  prefWidth="429.0" spacing="20" stylesheets="@menus-styles.css"
+  xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.example.demo.controllers.GameMenuController"
+  fx:id="mainBox">
 
   <!-- Заголовок -->
-  <Button fx:id="startGameButton" onAction="#startGame" styleClass="menu-button" text="Start Game" />
+  <Button onAction="#startGame" styleClass="menu-button" text="Start Game" fx:id="startGameButton"/>
 
   <!-- Поля введення -->
-  <Label styleClass="title-label" text="Quiz-Duell" />
+  <Label styleClass="title-label" text="Quiz-Duell"/>
 
   <!-- Кнопка початку гри -->
   <VBox alignment="CENTER" prefWidth="300" spacing="15">
-    <TextField fx:id="player1Name" promptText="Player 1 Name" styleClass="input-field" />
-    <TextField fx:id="player2Name" promptText="Player 2 Name" styleClass="input-field" />
+    <TextField promptText="Player 1 Name" styleClass="input-field" fx:id="player1Name"/>
+    <TextField promptText="Player 2 Name" styleClass="input-field" fx:id="player2Name"/>
   </VBox>
 </VBox>
