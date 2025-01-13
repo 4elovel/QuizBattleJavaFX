@@ -1,0 +1,79 @@
+/* Стиль для VBox */
+#menuBox {
+  -fx-background-color: linear-gradient(to bottom, #3c3f41, #232526);
+  -fx-padding: 20;
+  -fx-border-radius: 10;
+  -fx-min-width: 400px;
+  -fx-min-height: 400px;
+}
+
+/* Стиль для кнопок */
+.menu-button {
+  -fx-font-size: 16px;
+  -fx-font-family: "Arial";
+  -fx-background-color: #61a4bc;
+  -fx-text-fill: white;
+  -fx-border-radius: 5;
+  -fx-background-radius: 5;
+  -fx-padding: 10 20;
+  -fx-cursor: hand;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 3);
+}
+
+.menu-button:hover {
+  -fx-background-color: #4e92aa;
+}
+
+.menu-button:pressed {
+  -fx-background-color: #396b7c;
+}
+
+/* Загальний стиль для VBox */
+#mainBox {
+  -fx-background-color: linear-gradient(to bottom, #3c3f41, #232526);
+  -fx-padding: 30;
+  -fx-border-radius: 15;
+  -fx-min-width: 400px;
+  -fx-min-height: 500px;
+}
+
+/* Стиль для заголовка */
+.title-label {
+  -fx-font-size: 32px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #ffffff;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 3);
+}
+
+/* Стиль для текстових полів */
+.input-field {
+  -fx-font-size: 16px;
+  -fx-padding: 10;
+  -fx-border-radius: 5;
+  -fx-background-radius: 5;
+  -fx-background-color: #ffffff;
+  -fx-border-color: #cccccc;
+  -fx-border-width: 1;
+  -fx-text-fill: #333333;
+}
+
+/* Стиль для кнопки початку гри */
+.start-button {
+  -fx-font-size: 18px;
+  -fx-font-weight: bold;
+  -fx-background-color: #32cd32;
+  -fx-text-fill: white;
+  -fx-border-radius: 10;
+  -fx-background-radius: 10;
+  -fx-padding: 10 20;
+  -fx-cursor: hand;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 3);
+}
+
+.start-button:hover {
+  -fx-background-color: #28a428;
+}
+
+.start-button:pressed {
+  -fx-background-color: #1d7a1d;
+}

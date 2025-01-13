@@ -6,34 +6,40 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class MainMenuController {
 
     @FXML
-    TextField player1Name;
-    @FXML
-    TextField player2Name;
-
+    private Button btnStart;
 
     @FXML
-    protected void startGame(ActionEvent event) {
+    private Button btnSettings;
+
+    @FXML
+    private Button btnExit;
+
+    @FXML
+    private void initialize() {
+        btnStart.setOnAction(this::startGameMenu);
+        btnSettings.setOnAction(event -> System.out.println("Settings button clicked!"));
+        btnExit.setOnAction(event -> System.exit(0));
+    }
+
+    private void startGameMenu(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/example/demo/game.fxml"));
+                    getClass().getResource("/com/example/demo/game-menu.fxml"));
 
             Parent root = loader.load();
 
-            GameController gameController = loader.getController();
-            gameController.setPlayersNames(player1Name.getText(), player2Name.getText());
-
-            Stage stage = (Stage) player1Name.getScene().getWindow();
-            stage.setScene(new Scene(root));
+            Stage stage = (Stage) btnStart.getScene().getWindow();
+            stage.setScene(new Scene(root, 320, 240));
             stage.setTitle("Game");
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
+    }
 }

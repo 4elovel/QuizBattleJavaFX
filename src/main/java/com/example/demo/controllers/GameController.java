@@ -42,10 +42,6 @@ public class GameController {
     Label player1Name;
     @FXML
     Label player2Name;
-    /*    @FXML
-        Pane player1Pane;
-        @FXML
-        Pane player2Pane;*/
     @FXML
     Label player1Score;
     @FXML
@@ -85,7 +81,7 @@ public class GameController {
         setupAnswerButtons(currentQuestion, columns);
         setupGridConstraints(answerGrid, columns, rows);
         setupGridConstraints(playersInfoGrid, columns, rows);
-        //updatePlayerHighlight();
+        updatePlayerHighlight();
 
     }
 
@@ -192,50 +188,19 @@ public class GameController {
         player1Name.setText(name1);
         player2Name.setText(name2);
     }
-/*
-
-    private void updatePlayerHighlight() {
-        if (isPlayer1Turn) {
-            player1Pane.setStyle(
-                    "-fx-border-color: #FFD700; -fx-border-width: 3px; -fx-border-radius: 5px;");
-            player2Pane.setStyle("-fx-border-color: transparent;");
-        } else {
-            player2Pane.setStyle(
-                    "-fx-border-color: #FFD700; -fx-border-width: 3px; -fx-border-radius: 5px;");
-            player1Pane.setStyle("-fx-border-color: transparent;");
-        }
-    }
-*/
-
-
-
-/*    private void setupGridHighlight(GridPane grid) {
-        grid.setStyle("-fx-background-color: #32CD32;");
-    }
 
 
     private void updatePlayerHighlight() {
-        // Скидання стилів всіх комірок
-        resetPlayerHighlight();
-
-        // Застосування стилю до комірки поточного гравця
         if (isPlayer1Turn) {
-            highlightPlayerText(player1Name, Color.GOLD); // Change to gold for player 1
+            player1Name.setStyle(
+                    "-fx-border-color: #FFD700;-fx-background-color: #FFD700; -fx-border-width: 3px; -fx-border-radius: 5px;;-fx-background-radius: 3px;");
+            player2Name.setStyle(
+                    "-fx-border-color: transparent;-fx-background-color: transparent;");
         } else {
-            highlightPlayerText(player2Name, Color.RED); // Change to red for player 2
+            player2Name.setStyle(
+                    "-fx-border-color: #FFD700;-fx-background-color: #FFD700; -fx-border-width: 3px; -fx-border-radius: 5px;-fx-background-radius: 3px;");
+            player1Name.setStyle(
+                    "-fx-border-color: transparent;-fx-background-color: transparent;");
         }
     }
-
-    // Скидає стиль тексту всіх гравців
-    private void resetPlayerHighlight() {
-        player1Name.setStyle("-fx-text-fill: black;");
-        player2Name.setStyle("-fx-text-fill: black;");
-    }
-
-    // Змінює колір тексту активного гравця
-    private void highlightPlayerText(Label playerLabel, Color textColor) {
-        playerLabel.setStyle("-fx-text-fill: " + toHex(textColor) + ";");
-    }*/
-
-
 }
