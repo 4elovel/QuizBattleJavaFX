@@ -38,6 +38,7 @@ public class QuestionService {
         return questions;
     }
 
+
     private static Question parseQuestion(String line) {
         String[] parts = splitWithEscapedDelimiter(line, ";").toArray(new String[0]);
         if (parts.length != 3) {
@@ -126,6 +127,16 @@ public class QuestionService {
             writer.newLine();
         }
     }
+
+    public static void setDatabase(List<Question> questions) throws IOException {
+        try (FileWriter writer = new FileWriter(FILE_PATH, false)) {
+        }
+        for (Question question : questions) {
+            saveQuestion(question.getQuestionText(), question.getAnswerOptions(),
+                    question.getCorrectAnswerIndexes());
+        }
+    }
+
 
     public Question getNextQuestion() {
         if (currentIndex < questions.size()) {

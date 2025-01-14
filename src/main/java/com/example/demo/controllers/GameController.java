@@ -73,7 +73,7 @@ public class GameController {
             var winner = getWinner();
             question.setText("TIE");
             if (winner != null) {
-                question.setText(winner.getName() + " WINS WITH SCORE - " + winner.getScore());
+                question.setText(winner.getName() + " wins with score - " + winner.getScore());
             }
             backToMenuButton.setVisible(true);
             return;

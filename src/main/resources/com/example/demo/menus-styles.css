@@ -71,3 +71,19 @@
 .start-button:pressed {
   -fx-background-color: #1d7a1d;
 }
+
+.menu-button {
+  -fx-font-size: 14px;
+  -fx-background-color: #4e92aa;
+  -fx-text-fill: white;
+  -fx-border-radius: 5;
+  -fx-background-radius: 5;
+}
+
+.start-button {
+  -fx-font-size: 14px;
+  -fx-background-color: #32cd32;
+  -fx-text-fill: white;
+  -fx-border-radius: 5;
+  -fx-background-radius: 5;
+}
