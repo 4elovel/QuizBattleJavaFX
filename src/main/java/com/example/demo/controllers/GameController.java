@@ -5,6 +5,8 @@ import com.example.demo.entities.Question;
 import com.example.demo.services.QuestionService;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
@@ -13,8 +15,10 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import lombok.Getter;
+import lombok.SneakyThrows;
 
 public class GameController {
 
@@ -30,6 +34,8 @@ public class GameController {
             Color.web("#FFD700"), // Gold
             Color.web("#C71585")  // Medium Violet Red
     };
+    @FXML
+    Button backToMenuButton;
     @FXML
     GridPane answerGrid;
     @FXML
@@ -69,6 +75,7 @@ public class GameController {
             if (winner != null) {
                 question.setText(winner.getName() + " WINS WITH SCORE - " + winner.getScore());
             }
+            backToMenuButton.setVisible(true);
             return;
         }
         var answers = currentQuestion.getAnswerOptions();
@@ -90,9 +97,16 @@ public class GameController {
         while (playersInfoGrid.getColumnCount() != answerGrid.getColumnCount()) {
             if (playersInfoGrid.getColumnCount() < answerGrid.getColumnCount()) {
                 playersInfoGrid.getColumnConstraints().add(1, new ColumnConstraints());
+                continue;
+            }
+            if (playersInfoGrid.getColumnConstraints().size() == 1) {
                 break;
             }
-            playersInfoGrid.getColumnConstraints().remove(1);
+            if (playersInfoGrid.getColumnCount() > 2) {
+                playersInfoGrid.getColumnConstraints().remove(1);
+                continue;
+            }
+            break;
         }
     }
 
@@ -213,5 +227,17 @@ public class GameController {
             player1Name.setStyle(
                     "-fx-border-color: transparent;-fx-background-color: transparent;");
         }
+    }
+
+    @FXML
+    @SneakyThrows
+    private void handleBackToMenu() {
+        System.out.println("Back to Main Menu clicked");
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/com/example/demo/main-menu.fxml"));
+        Scene scene = new Scene(loader.load(), 320, 240);
+        Stage stage = (Stage) backToMenuButton.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 }
