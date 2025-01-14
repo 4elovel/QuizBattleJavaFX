@@ -12,7 +12,7 @@
   <children>
     <GridPane maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="600.0">
       <children>
-        <GridPane fx:id="playersInfoGrid" alignment="CENTER" hgap="10.0" nodeOrientation="LEFT_TO_RIGHT" vgap="10.0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
+        <GridPane fx:id="playersInfoGrid" alignment="CENTER" hgap="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="163.0" prefWidth="1158.0" vgap="10.0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
           <children>
             <Label fx:id="player2Name" alignment="CENTER" text="Player1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
               <font>
@@ -40,7 +40,7 @@
 
         <TextFlow fx:id="questionText" prefHeight="100.0" prefWidth="1159.0" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
           <children>
-            <Text fx:id="question" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+            <Text fx:id="question" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="50.255859375">
               <font>
                 <Font size="20.0" />
               </font>

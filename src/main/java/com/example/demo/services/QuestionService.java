@@ -43,16 +43,13 @@ public class QuestionService {
         if (parts.length != 3) {
             throw new IllegalArgumentException("Invalid question format: " + line);
         }
-        // Знімаємо екранування тексту питання
         String questionText = unescape(parts[0].trim());
 
-        // Знімаємо екранування тексту варіантів відповідей
         List<String> answerOptions = new ArrayList<>();
         for (String option : splitWithEscapedDelimiter(parts[1], ",")) {
             answerOptions.add(unescape(option));
         }
 
-        // Читаємо індекси правильних відповідей
         List<Integer> correctAnswerIndexes = new ArrayList<>();
         for (String index : parts[2].split(",")) {
             correctAnswerIndexes.add(Integer.parseInt(index.trim()));
@@ -112,21 +109,18 @@ public class QuestionService {
 
     public static void saveQuestion(String questionText, List<String> answerOptions,
             List<Integer> correctAnswerIndexes) throws IOException {
-        // Екранування тексту
         String escapedQuestion = escape(questionText);
         List<String> escapedOptions = new ArrayList<>();
         for (String option : answerOptions) {
             escapedOptions.add(escape(option));
         }
 
-        // Форматування рядка для запису у файл
         StringBuilder line = new StringBuilder();
         line.append(escapedQuestion).append(";");
         line.append(String.join(",", escapedOptions)).append(";");
         line.append(String.join(",",
                 correctAnswerIndexes.stream().map(String::valueOf).toArray(String[]::new)));
 
-        // Запис у файл
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
             writer.write(line.toString());
             writer.newLine();

@@ -82,7 +82,18 @@ public class GameController {
         setupGridConstraints(answerGrid, columns, rows);
         setupGridConstraints(playersInfoGrid, columns, rows);
         updatePlayerHighlight();
+        setupPlayersLabel();
 
+    }
+
+    private void setupPlayersLabel() {
+        while (playersInfoGrid.getColumnCount() != answerGrid.getColumnCount()) {
+            if (playersInfoGrid.getColumnCount() < answerGrid.getColumnCount()) {
+                playersInfoGrid.getColumnConstraints().add(1, new ColumnConstraints());
+                break;
+            }
+            playersInfoGrid.getColumnConstraints().remove(1);
+        }
     }
 
     private void handleAnswerSelection(Button button, String selectedAnswer) {
