@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import lombok.SneakyThrows;
 
 public class GameMenuController {
 
@@ -34,6 +35,17 @@ public class GameMenuController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    @SneakyThrows
+    protected void goToMainMenu() {
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/com/example/demo/main-menu.fxml"));
+        Scene scene = new Scene(loader.load(), 320, 240);
+        Stage stage = (Stage) player1Name.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

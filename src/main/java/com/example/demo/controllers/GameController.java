@@ -232,7 +232,6 @@ public class GameController {
     @FXML
     @SneakyThrows
     private void handleBackToMenu() {
-        System.out.println("Back to Main Menu clicked");
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("/com/example/demo/main-menu.fxml"));
         Scene scene = new Scene(loader.load(), 320, 240);

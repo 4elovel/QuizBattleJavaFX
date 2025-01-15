@@ -7,20 +7,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controllers.GameSettingsController">
-  <VBox prefHeight="503.0" prefWidth="1063.0" spacing="10" style="-fx-padding: 10;">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" stylesheets="@menus-styles.css"
+  xmlns="http://javafx.com/javafx/23.0.1"
+  fx:controller="com.example.demo.controllers.GameSettingsController">
+  <VBox style="-fx-padding: 10;" prefHeight="503.0" prefWidth="1063.0" spacing="10">
     <HBox spacing="10">
-      <Button fx:id="addButton" onAction="#handleAddButtonAction" text="Add" />
-      <Button fx:id="deleteButton" onAction="#handleDeleteButtonAction" text="Delete" />
-      <Button fx:id="saveChangesButton" mnemonicParsing="false" onAction="#handleSaveChangesButtonAction" text="Save Changes" />
+      <Button onAction="#handleAddButtonAction" styleClass="menu-button" text="Add"/>
+      <Button onAction="#handleDeleteButtonAction" styleClass="menu-button" text="Delete"/>
+      <Button mnemonicParsing="false" onAction="#handleSaveChangesButtonAction"
+        styleClass="menu-button" text="Save changes"/>
+      <Button mnemonicParsing="false" onAction="#handleGoToMainMenuButtonAction"
+        styleClass="menu-button" text="Main menu"/>
     </HBox>
-    <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Question Settings" />
-    <TableView fx:id="questionsTable" prefHeight="400" prefWidth="600" xmlns:fx="http://javafx.com/fxml">
+    <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Question Settings"/>
+    <TableView xmlns:fx="http://javafx.com/fxml" prefHeight="400" prefWidth="600"
+      fx:id="questionsTable">
       <columns>
-        <TableColumn fx:id="questionColumn" prefWidth="300" text="Question" />
-        <TableColumn fx:id="answersColumn" prefWidth="300" text="Answers" />
-        <TableColumn fx:id="correctAnswersColumn" prefWidth="200" text="Correct Answers" />
+        <TableColumn prefWidth="300" text="Question" fx:id="questionColumn"/>
+        <TableColumn prefWidth="300" text="Answers" fx:id="answersColumn"/>
+        <TableColumn prefWidth="200" text="Correct Answers" fx:id="correctAnswersColumn"/>
       </columns>
     </TableView>
 

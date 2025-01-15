@@ -10,7 +10,8 @@
   fx:id="mainBox">
 
   <!-- Заголовок -->
-  <Button onAction="#startGame" styleClass="menu-button" text="Start Game" fx:id="startGameButton"/>
+  <Button onAction="#startGame" styleClass="menu-button" text="Start game"/>
+  <Button onAction="#goToMainMenu" styleClass="menu-button" text="Main menu"/>
 
   <!-- Поля введення -->
   <Label styleClass="title-label" text="Quiz-Duell"/>

@@ -37,7 +37,7 @@ public class MainMenuController {
         Parent root = loader.load();
 
         Stage stage = (Stage) btnStart.getScene().getWindow();
-        stage.setScene(new Scene(root, 320, 240));
+        stage.setScene(new Scene(root, 320, 300));
         stage.setTitle("Game");
 
     }

@@ -10,9 +10,13 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
+import lombok.SneakyThrows;
 
 
 public class GameSettingsController {
@@ -89,6 +93,17 @@ public class GameSettingsController {
         Question newQuestion = new Question("New Question", Arrays.asList("Option 1", "Option 2"),
                 List.of(0));
         questions.add(newQuestion);
+    }
+
+    @FXML
+    @SneakyThrows
+    private void handleGoToMainMenuButtonAction() {
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/com/example/demo/main-menu.fxml"));
+        Scene scene = new Scene(loader.load(), 320, 240);
+        Stage stage = (Stage) questionsTable.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
