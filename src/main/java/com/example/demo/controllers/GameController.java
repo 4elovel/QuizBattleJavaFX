@@ -69,7 +69,7 @@ public class GameController {
 
     private void rerenderScene() {
         currentQuestion = questionService.getNextQuestion();
-        if (currentQuestion == null) {
+        if (currentQuestion == null || player1.getScore() >= 1000 || player2.getScore() >= 1000) {
             var winner = getWinner();
             question.setText("TIE");
             if (winner != null) {

@@ -1,3 +1,45 @@
-1What is 2 + 2 ?;3,4,5,7,4,1;1,4
-What is the capital\\, of Fr\;ance?;Berlin,Mad\\,rid,Pa\\,ri\;s,Ro\;me;2
-What is the capital\\, of Fr\;ance?;Berlin,Mad\\,rid,Pa\\,ri\;s,Ro\;me,ef,hh;2
+Welches der folgenden Tiere ist ein Säugetier?;Wal,Haifisch,Krokodil,Katze;0,3
+Welche der folgenden Städte liegen in Deutschland?;Berlin,Wien,Frankfurt,Prag;0,2
+Was sind primäre Farben?;Rot,Blau,Grün,Gelb;0,1,3
+Welche dieser Elemente sind Metalle?;Gold,Sauerstoff,Silber,Wasserstoff;0,2
+Was sind Kontinente?;Europa,Asien,Afrika,Atlantik;0,1,2
+Welche der folgenden Sprachen sind romanische Sprachen?;Spanisch,Deutsch,Französisch,Italienisch;0,2,3
+Wie viel ist 2 + 2?;3,4,5,6;1
+Was ist die Hauptstadt von Deutschland?;Berlin,Hamburg,München,Köln;0
+Welches Tier ist ein Säugetier?;Fisch,Vogel,Elefant;2
+Wie viele Planeten gibt es im Sonnensystem?;8,9,10,7;0
+Welche Farbe hat der Himmel?;Blau,Rot,Grün;0
+Wer schrieb "Faust"?;Goethe,Schiller,Kafka;0
+Was ist die Hauptstadt von Frankreich?;Paris,Lyon,Marseille;0
+Was ist die Summe von 5 und 7?;11,12,13,14;1
+Wie heißt der längste Fluss der Welt?;Nil,Amazonas,Rhein;1
+Welches Element hat das chemische Symbol H?;Helium,Wasserstoff,Kohlenstoff;1
+Wer war der erste Mensch im Weltall?;Neil Armstrong,Juri Gagarin,Buzz Aldrin;1
+Welche Sprache spricht man in Brasilien?;Spanisch,Portugiesisch,Französisch;1
+Was ist das Quadrat von 6?;36,18,24;0
+Wer ist bekannt als "Vater der modernen Physik"?;Newton,Einstein,Galileo;1
+Was ist die Hauptstadt von Italien?;Rom,Mailand,Florenz;0
+Wie viele Kontinente gibt es?;6,7,8;1
+Wer malte die Mona Lisa?;Da Vinci,Van Gogh,Michelangelo;0
+Was ist die chemische Formel für Wasser?;H2O,CO2,O2;0
+Welche Farbe hat Chlorophyll?;Grün,Gelb,Blau;0
+Welcher Planet ist der heißeste?;Merkur,Venus,Mars;1
+Was ist das größte Organ im menschlichen Körper?;Leber,Haut,Herz;1
+Welche Zahl ist eine Primzahl?;9,11,12;1
+Was ist die Hauptstadt von Spanien?;Madrid,Barcelona,Sevilla;0
+Welche Jahreszeit kommt nach dem Frühling?;Sommer,Herbst,Winter;0
+Wie viele Minuten hat eine Stunde?;60,70,80;0
+Wer erfand das Telefon?;Edison,Bell,Tesla;1
+Wie heißt der längste Tag im Jahr?;Sommersonnenwende,Wintersonnenwende;0
+Was ist die Hauptstadt von Österreich?;Wien,Salzburg,Graz;0
+Welche Farbe hat ein reifer Apfel?;Rot,Grün,Blau;0
+Was ist 10 geteilt durch 2?;4,5,6;1
+Welches Gas atmen Menschen ein?;Sauerstoff,Stickstoff,Helium;0
+Welcher Planet hat die meisten Monde?;Saturn,Jupiter,Uranus;1
+Welche Temperatur ist der Gefrierpunkt von Wasser?;0,32,-1;0
+Wie viele Zähne hat ein erwachsener Mensch normalerweise?;28,32,36;1
+Was ist die Hauptstadt der Schweiz?;Bern,Zürich,Genf;0
+Wie viele Tage hat ein Schaltjahr?;365,366,367;1
+Wer komponierte die "Ode an die Freude"?;Mozart,Beethoven,Bach;1
+Welche Zahl kommt nach 99?;100,101,98;0
+Wie nennt man eine Gruppe von Wölfen?;Herde,Rudel,Schwarm;1
