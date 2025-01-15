@@ -74,7 +74,7 @@ public class QuestionService {
             } else if (text.startsWith(delimiter, i)) {
                 result.add(current.toString().trim());
                 current.setLength(0);
-                i += delimiter.length() - 1; // Пропускаємо довжину роздільника
+                i += delimiter.length() - 1;
             } else {
                 current.append(c);
             }

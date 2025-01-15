@@ -34,17 +34,13 @@ public class GameSettingsController {
 
     @FXML
     public void initialize() {
-
         questions = FXCollections.observableArrayList(loadedQuestions);
 
-        // Встановлення даних для таблиці
         questionsTable.setItems(questions);
 
-        // Прив'язка першого стовпця до питання
         questionColumn.setCellValueFactory(
                 cellData -> new SimpleStringProperty(cellData.getValue().getQuestionText()));
 
-        // Прив'язка другого стовпця до варіантів відповідей (об'єднання їх в один рядок)
         answersColumn.setCellValueFactory(cellData -> new SimpleStringProperty(
                 String.join(", ", cellData.getValue().getAnswerOptions())));
 
@@ -54,23 +50,20 @@ public class GameSettingsController {
                         .collect(Collectors.joining(", "))
         ));
 
-        // Дозволяємо редагувати стовпець питання
         questionColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         questionColumn.setOnEditCommit(event -> {
             Question question = event.getRowValue();
-            question.setQuestionText(event.getNewValue()); // Оновлення питання
+            question.setQuestionText(event.getNewValue());
         });
 
-        // Дозволяємо редагувати стовпець з варіантами відповідей
         answersColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         answersColumn.setOnEditCommit(event -> {
             Question question = event.getRowValue();
             String newAnswersText = event.getNewValue();
             List<String> newAnswers = Arrays.asList(newAnswersText.split(","));
-            question.setAnswerOptions(newAnswers); // Оновлення варіантів відповідей
+            question.setAnswerOptions(newAnswers);
         });
 
-        // Дозволяємо редагувати стовпець з правильними відповідями
         correctAnswersColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         correctAnswersColumn.setOnEditCommit(event -> {
             Question question = event.getRowValue();
@@ -79,15 +72,22 @@ public class GameSettingsController {
                     .map(String::trim)
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
-            question.setCorrectAnswerIndexes(newCorrectAnswers); // Оновлення правильних відповідей
+            question.setCorrectAnswerIndexes(newCorrectAnswers);
         });
 
-        // Активуємо редагування таблиці при натисканні на клітинки
+        questionsTable.widthProperty().addListener((observable, oldValue, newValue) -> {
+            double tableWidth = newValue.doubleValue();
+            double columnWidth = tableWidth / 3;
+
+            questionColumn.setPrefWidth(columnWidth);
+            answersColumn.setPrefWidth(columnWidth);
+            correctAnswersColumn.setPrefWidth(columnWidth);
+        });
+
         questionsTable.setEditable(true);
     }
 
 
-    // Метод для додавання нового питання
     @FXML
     private void handleAddButtonAction() {
         Question newQuestion = new Question("New Question", Arrays.asList("Option 1", "Option 2"),
@@ -108,15 +108,10 @@ public class GameSettingsController {
 
     @FXML
     private void handleDeleteButtonAction() {
-        // Отримуємо вибране питання з таблиці
         Question selectedQuestion = questionsTable.getSelectionModel().getSelectedItem();
 
-        // Перевірка, чи є вибране питання
         if (selectedQuestion != null) {
-            // Видалення питання з ObservableList
             questions.remove(selectedQuestion);
-
-            // Можна також оновити базу даних, якщо потрібно
             try {
                 QuestionService.setDatabase(questions);
             } catch (IOException e) {
