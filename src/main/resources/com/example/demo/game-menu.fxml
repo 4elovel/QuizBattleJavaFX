@@ -11,13 +11,13 @@
   fx:controller="com.example.demo.controllers.GameMenuController"
   fx:id="mainBox">
 
-  <Button onAction="#startGame" styleClass="menu-button" text="Start game"/>
-  <Button onAction="#goToMainMenu" styleClass="menu-button" text="Main menu"/>
+  <Button onAction="#startGame" styleClass="menu-button" text="Spiel starten"/>
+  <Button onAction="#goToMainMenu" styleClass="menu-button" text="Hauptmenü"/>
 
   <Label styleClass="title-label" text="Quiz-Duell"/>
 
   <VBox alignment="CENTER" prefWidth="300" spacing="15">
-    <TextField promptText="Player 1 Name" styleClass="input-field" fx:id="player1Name"/>
-    <TextField promptText="Player 2 Name" styleClass="input-field" fx:id="player2Name"/>
+    <TextField promptText="Spieler 1 Name" styleClass="input-field" fx:id="player1Name"/>
+    <TextField promptText="Spieler 2 Name" styleClass="input-field" fx:id="player2Name"/>
   </VBox>
 </VBox>

@@ -42,7 +42,7 @@ public class QuestionService {
     private static Question parseQuestion(String line) {
         String[] parts = splitWithEscapedDelimiter(line, ";").toArray(new String[0]);
         if (parts.length != 3) {
-            throw new IllegalArgumentException("Invalid question format: " + line);
+            throw new IllegalArgumentException("Ungültiges Frageformat: " + line);
         }
         String questionText = unescape(parts[0].trim());
 

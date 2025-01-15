@@ -19,7 +19,7 @@
       <children>
         <Button GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP"
           mnemonicParsing="false"
-          onAction="#handleBackToMenu" styleClass="menu-button" text="Return to main Menu"
+          onAction="#handleBackToMenu" styleClass="menu-button" text="Zurück zum Hauptmenü"
           visible="false" fx:id="backToMenuButton"/>
 
         <GridPane GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES"
@@ -30,7 +30,7 @@
           <children>
             <Label GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES"
               GridPane.valignment="CENTER"
-              GridPane.vgrow="SOMETIMES" alignment="CENTER" text="Player1"
+              GridPane.vgrow="SOMETIMES" alignment="CENTER" text="Spieler 2"
               fx:id="player2Name">
               <font>
                 <Font size="21.0"/>
@@ -39,10 +39,10 @@
             <Label GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES"
               GridPane.valignment="BOTTOM"
               GridPane.vgrow="SOMETIMES" alignment="CENTER" contentDisplay="CENTER"
-              text="score: 0" textAlignment="CENTER" fx:id="player2Score"/>
+              text="Punkts: 0" textAlignment="CENTER" fx:id="player2Score"/>
             <Label GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES"
               GridPane.valignment="CENTER"
-              GridPane.vgrow="SOMETIMES" alignment="CENTER" text="Player1"
+              GridPane.vgrow="SOMETIMES" alignment="CENTER" text="Spieler1"
               fx:id="player1Name">
               <font>
                 <Font size="21.0"/>
@@ -50,7 +50,7 @@
             </Label>
             <Label GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES"
               GridPane.valignment="BOTTOM" GridPane.vgrow="SOMETIMES"
-              alignment="CENTER" contentDisplay="CENTER" text="score: 0"
+              alignment="CENTER" contentDisplay="CENTER" text="Punkts: 0"
               textAlignment="CENTER" fx:id="player1Score"/>
           </children>
           <columnConstraints>

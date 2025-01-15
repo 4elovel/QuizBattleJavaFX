@@ -31,7 +31,6 @@ public class GameMenuController {
 
             Stage stage = (Stage) player1Name.getScene().getWindow();
             stage.setScene(new Scene(root));
-            stage.setTitle("Game");
         } catch (IOException e) {
             e.printStackTrace();
         }

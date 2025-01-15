@@ -90,7 +90,7 @@ public class GameSettingsController {
 
     @FXML
     private void handleAddButtonAction() {
-        Question newQuestion = new Question("New Question", Arrays.asList("Option 1", "Option 2"),
+        Question newQuestion = new Question("Neue Frage", Arrays.asList("Option 1", "Option 2"),
                 List.of(0));
         questions.add(newQuestion);
     }
@@ -118,7 +118,7 @@ public class GameSettingsController {
                 e.printStackTrace();
             }
         } else {
-            System.out.println("No question selected.");
+            System.out.println("Keine Frage ausgewählt.");
         }
     }
 

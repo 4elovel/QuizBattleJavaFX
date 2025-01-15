@@ -71,9 +71,9 @@ public class GameController {
         currentQuestion = questionService.getNextQuestion();
         if (currentQuestion == null || player1.getScore() >= 1000 || player2.getScore() >= 1000) {
             var winner = getWinner();
-            question.setText("TIE");
+            question.setText("Das Spiel ist unentschieden");
             if (winner != null) {
-                question.setText(winner.getName() + " wins with score - " + winner.getScore());
+                question.setText(winner.getName() + " gewinnt mit Punkten - " + winner.getScore());
             }
             backToMenuButton.setVisible(true);
             return;
@@ -117,11 +117,11 @@ public class GameController {
             button.setStyle("-fx-background-color: #32CD32;");
             if (isPlayer1Turn) {
                 player1.incrementScore();
-                player1Score.setText("score: " + player1.getScore());
+                player1Score.setText("Punkten: " + player1.getScore());
             } else {
 
                 player2.incrementScore();
-                player2Score.setText("score: " + player2.getScore());
+                player2Score.setText("Punkten: " + player2.getScore());
             }
         } else {
             button.setStyle(

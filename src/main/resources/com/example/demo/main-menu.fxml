@@ -8,6 +8,6 @@
   fx:id="menuBox">
 
   <Button styleClass="menu-button" text="Start" fx:id="btnStart"/>
-  <Button styleClass="menu-button" text="Settings" fx:id="btnSettings"/>
+  <Button styleClass="menu-button" text="Einstellungen" fx:id="btnSettings"/>
   <Button styleClass="menu-button" text="Exit" fx:id="btnExit"/>
 </VBox>

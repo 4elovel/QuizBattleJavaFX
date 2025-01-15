@@ -24,7 +24,6 @@ public class MainMenuController {
     @FXML
     private void initialize() {
         btnStart.setOnAction(this::startGameMenu);
-        btnSettings.setOnAction(event -> System.out.println("Settings button clicked!"));
         btnExit.setOnAction(event -> System.exit(0));
         btnSettings.setOnAction(this::startSettings);
     }
@@ -38,7 +37,6 @@ public class MainMenuController {
 
         Stage stage = (Stage) btnStart.getScene().getWindow();
         stage.setScene(new Scene(root, 320, 300));
-        stage.setTitle("Game");
 
     }
 
@@ -51,7 +49,6 @@ public class MainMenuController {
 
         Stage stage = (Stage) btnStart.getScene().getWindow();
         stage.setScene(new Scene(root, 640, 600));
-        stage.setTitle("Game");
 
     }
 }
