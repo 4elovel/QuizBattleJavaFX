@@ -8,7 +8,7 @@
   prefHeight="273.0"
   prefWidth="429.0" spacing="20" stylesheets="@menus-styles.css"
   xmlns="http://javafx.com/javafx/23.0.1"
-  fx:controller="com.example.demo.controllers.GameMenuController"
+  fx:controller="com.example.quizbattle.controllers.GameMenuController"
   fx:id="mainBox">
 
   <Button onAction="#startGame" styleClass="menu-button" text="Spiel starten"/>

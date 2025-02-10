@@ -1,6 +1,6 @@
-package com.example.demo.services;
+package com.example.quizbattle.services;
 
-import com.example.demo.entities.Question;
+import com.example.quizbattle.entities.Question;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;

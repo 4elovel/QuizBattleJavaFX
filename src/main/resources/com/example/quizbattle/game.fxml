@@ -12,7 +12,7 @@
   style="-fx-padding: 10px; -fx-border-insets: 10px; -fx-background-insets: 10px;"
   stylesheets="@menus-styles.css"
   xmlns="http://javafx.com/javafx/23.0.1"
-  fx:controller="com.example.demo.controllers.GameController">
+  fx:controller="com.example.quizbattle.controllers.GameController">
   <children>
     <GridPane maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity"
       prefHeight="200.0" prefWidth="600.0">

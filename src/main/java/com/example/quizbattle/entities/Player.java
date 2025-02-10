@@ -1,4 +1,4 @@
-package com.example.demo.entities;
+package com.example.quizbattle.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

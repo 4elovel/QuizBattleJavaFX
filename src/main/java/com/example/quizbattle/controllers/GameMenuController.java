@@ -1,4 +1,4 @@
-package com.example.demo.controllers;
+package com.example.quizbattle.controllers;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
@@ -22,7 +22,7 @@ public class GameMenuController {
     protected void startGame(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/example/demo/game.fxml"));
+                    getClass().getResource("/com/example/quizbattle/game.fxml"));
 
             Parent root = loader.load();
 
@@ -40,7 +40,7 @@ public class GameMenuController {
     @SneakyThrows
     protected void goToMainMenu() {
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/com/example/demo/main-menu.fxml"));
+                getClass().getResource("/com/example/quizbattle/main-menu.fxml"));
         Scene scene = new Scene(loader.load(), 320, 240);
         Stage stage = (Stage) player1Name.getScene().getWindow();
         stage.setScene(scene);

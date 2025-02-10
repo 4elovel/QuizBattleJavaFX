@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER"
   spacing="15" stylesheets="@menus-styles.css" xmlns="http://javafx.com/javafx"
-  fx:controller="com.example.demo.controllers.MainMenuController"
+  fx:controller="com.example.quizbattle.controllers.MainMenuController"
   fx:id="menuBox">
 
   <Button styleClass="menu-button" text="Start" fx:id="btnStart"/>

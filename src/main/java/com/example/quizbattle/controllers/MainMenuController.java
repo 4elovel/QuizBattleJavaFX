@@ -1,4 +1,4 @@
-package com.example.demo.controllers;
+package com.example.quizbattle.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,7 +31,7 @@ public class MainMenuController {
     @SneakyThrows
     private void startGameMenu(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/com/example/demo/game-menu.fxml"));
+                getClass().getResource("/com/example/quizbattle/game-menu.fxml"));
 
         Parent root = loader.load();
 
@@ -43,7 +43,7 @@ public class MainMenuController {
     @SneakyThrows
     private void startSettings(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/com/example/demo/game-settings.fxml"));
+                getClass().getResource("/com/example/quizbattle/game-settings.fxml"));
 
         Parent root = loader.load();
 

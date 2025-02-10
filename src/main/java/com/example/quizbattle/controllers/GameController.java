@@ -1,8 +1,8 @@
-package com.example.demo.controllers;
+package com.example.quizbattle.controllers;
 
-import com.example.demo.entities.Player;
-import com.example.demo.entities.Question;
-import com.example.demo.services.QuestionService;
+import com.example.quizbattle.entities.Player;
+import com.example.quizbattle.entities.Question;
+import com.example.quizbattle.services.QuestionService;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -233,7 +233,7 @@ public class GameController {
     @SneakyThrows
     private void handleBackToMenu() {
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/com/example/demo/main-menu.fxml"));
+                getClass().getResource("/com/example/quizbattle/main-menu.fxml"));
         Scene scene = new Scene(loader.load(), 320, 240);
         Stage stage = (Stage) backToMenuButton.getScene().getWindow();
         stage.setScene(scene);

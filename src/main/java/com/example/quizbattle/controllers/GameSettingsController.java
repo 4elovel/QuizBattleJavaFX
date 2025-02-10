@@ -1,7 +1,7 @@
-package com.example.demo.controllers;
+package com.example.quizbattle.controllers;
 
-import com.example.demo.entities.Question;
-import com.example.demo.services.QuestionService;
+import com.example.quizbattle.entities.Question;
+import com.example.quizbattle.services.QuestionService;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -99,7 +99,7 @@ public class GameSettingsController {
     @SneakyThrows
     private void handleGoToMainMenuButtonAction() {
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/com/example/demo/main-menu.fxml"));
+                getClass().getResource("/com/example/quizbattle/main-menu.fxml"));
         Scene scene = new Scene(loader.load(), 320, 240);
         Stage stage = (Stage) questionsTable.getScene().getWindow();
         stage.setScene(scene);
